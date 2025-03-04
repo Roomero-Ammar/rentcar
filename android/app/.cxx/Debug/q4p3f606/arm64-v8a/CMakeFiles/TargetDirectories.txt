@@ -1,0 +1,2 @@
+E:/Futter Apps/rentcar/android/app/.cxx/Debug/q4p3f606/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/Futter Apps/rentcar/android/app/.cxx/Debug/q4p3f606/arm64-v8a/CMakeFiles/rebuild_cache.dir
