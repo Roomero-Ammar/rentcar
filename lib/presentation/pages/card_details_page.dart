@@ -28,6 +28,7 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
           children: [
             CarCard(
               car:  Car(
+                         image: widget.car.image??'assets/car_image.png',
                           model: widget.car.model,
                           distance: widget.car.distance ,
                           fuelCapacity: widget.car.fuelCapacity,
