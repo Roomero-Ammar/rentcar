@@ -13,7 +13,33 @@ class CardDetailsPage extends StatefulWidget {
   State<CardDetailsPage> createState() => _CardDetailsPageState();
 }
 
-class _CardDetailsPageState extends State<CardDetailsPage> {
+class _CardDetailsPageState extends State<CardDetailsPage> with SingleTickerProviderStateMixin {
+ AnimationController? _controller;
+  Animation<double>? _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 1.0, end: 1.5).animate(_controller!)
+    ..addListener(() { setState(() {
+    }); });
+
+    _controller!.forward();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller!.forward();
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +114,12 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
-                          child: Image.asset('assets/maps.png',fit: BoxFit.cover,),
+
+                          child: Transform.scale(
+                            scale: _animation!.value,
+                            alignment: Alignment.center,
+                            child: Image.asset('assets/maps.png',fit: BoxFit.cover,),
+                            ),
                         ),
                       ),
                     ),
