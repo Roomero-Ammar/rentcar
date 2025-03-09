@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rentcar/firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rentcar/injection/injection.dart';
 
 
 import 'presentation/pages/onboarding_page.dart';
@@ -11,6 +12,7 @@ void main() async{
   await Firebase.initializeApp(
     options : DefaultFirebaseOptions.currentPlatform,
   );
+  initInjection();
   runApp(const MyApp());
 }
 
