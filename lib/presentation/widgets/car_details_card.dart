@@ -99,7 +99,7 @@ class CarDetailsCard extends StatelessWidget {
           Positioned(
             top: 50,
             right: 20,
-            child: Image.asset(car.image ?? 'assets/car_image.png', height: 100),
+            child: Image.asset(car.image ?? 'assets/user.png', height: 100),
           ),
         ],
       ),

@@ -32,7 +32,13 @@ class CarCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(car.image??'assets/car_image.png', height: 120,),
+            
+           Image.asset(car.image??'assets/car_image.png', height: 120,),
+
+        // car.image != null && car.image!.startsWith('http')
+        // ? Image.asset(car.image!, height: 120)  // Load from Firebase Storage
+        // : Image.asset('assets/car_image.png', height: 120), // Default asset
+     
             Text(car.model, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
             SizedBox(height: 10,),
             Row(
