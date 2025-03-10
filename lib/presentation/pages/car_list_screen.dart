@@ -43,25 +43,29 @@ class CarListScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
+      // using cubit
       body: BlocBuilder<CarCubit, CarState>(
+      // using bloc
+      // body: BlocBuilder<CarBloc, CarState>(
         builder: (context, state) {
           if (state is CarsLoading) {
             return Center(child: CircularProgressIndicator());
-          } else if (state is CarsLoaded) {
-            return ListView.builder(
-              itemCount: state.cars.length,
-              itemBuilder: (context, index) => CarCard(car: state.cars[index]),
-            );
-          } else if (state is CarsError) {
+          }
+          else if (state is CarsLoaded) {
+                      return ListView.builder(
+        itemCount: state.cars.length,
+        itemBuilder: (context, index) => CarCard(car: state.cars[index]),
+      );
+
+          }
+          else if (state is CarsError) {
             return Center(
-              child: Center(
-                child: Text('error : ${state.message}'),
-              ),
+              child: Center(child: Text('error : ${state.message}'),),
             );
           }
           return Container();
         },
-      ),
+      )
     );
   }
 }
