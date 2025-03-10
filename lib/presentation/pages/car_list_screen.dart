@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rentcar/data/models/car.dart';
 import 'package:rentcar/presentation/bloc/car_bloc.dart';
 import 'package:rentcar/presentation/bloc/car_state.dart';
+import 'package:rentcar/presentation/cubit/car_cubit.dart';
 import 'package:rentcar/presentation/widgets/car_card.dart';
 
 class CarListScreen extends StatelessWidget {
@@ -42,26 +43,25 @@ class CarListScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
-      body: BlocBuilder<CarBloc, CarState>(
+      body: BlocBuilder<CarCubit, CarState>(
         builder: (context, state) {
           if (state is CarsLoading) {
             return Center(child: CircularProgressIndicator());
-          }
-          else if (state is CarsLoaded) {
-                      return ListView.builder(
-        itemCount: state.cars.length,
-        itemBuilder: (context, index) => CarCard(car: state.cars[index]),
-      );
-
-          }
-          else if (state is CarsError) {
+          } else if (state is CarsLoaded) {
+            return ListView.builder(
+              itemCount: state.cars.length,
+              itemBuilder: (context, index) => CarCard(car: state.cars[index]),
+            );
+          } else if (state is CarsError) {
             return Center(
-              child: Center(child: Text('error : ${state.message}'),),
+              child: Center(
+                child: Text('error : ${state.message}'),
+              ),
             );
           }
           return Container();
         },
-      )
+      ),
     );
   }
 }
